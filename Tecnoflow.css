@@ -1,0 +1,548 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Fontes e fundo */
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #0b1524 0%, #1b2a50 100%);
+    color: #cbd5e1;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+/* Menu lateral */
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: #122a57;
+  overflow-x: hidden;
+  transition: width 0.3s ease;
+  padding-top: 60px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Botão de fechar */
+.sidebar .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+  z-index: 1001;
+}
+
+.modern-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.modern-menu li {
+  margin: 15px 0;
+}
+
+.modern-menu a {
+  text-decoration: none;
+  color: #66aaff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.modern-menu a i {
+  font-size: 18px;
+  min-width: 20px; /* pra alinhar direito os ícones */
+  color: #66aaff;
+}
+
+.modern-menu a:hover {
+  background-color: #66aaff22;
+  color: #0b1524;
+}
+
+.modern-menu a:hover i {
+  color: #0b1524;
+}
+
+/* Estilo especial para o Premium */
+.modern-menu li.premium a {
+  color: #f5c518;
+}
+
+.modern-menu li.premium a i {
+  color: #f5c518;
+}
+
+.modern-menu li.premium a:hover {
+  background-color: #f5c51822;
+  color: #0b1524;
+}
+
+.modern-menu li.premium a:hover i {
+  color: #0b1524;
+}
+
+
+.menu-btn {
+  position: fixed;
+  top: 18px;
+  left: 20px;
+  cursor: pointer;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 30px;
+  height: 25px;
+}
+
+.menu-btn .bar {
+  width: 100%;
+  height: 4px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: left center;
+}
+
+/* Quando o menu estiver aberto, adiciona classe active no menu-btn */
+.menu-btn.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-btn.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+  
+  /* Cabeçalho */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #122a57;
+    padding: 15px 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    position: sticky;
+    top: 0;
+    z-index: 900;
+  }
+  
+  /* Logo deslocada para direita */
+  .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: white;
+    letter-spacing: 2px;
+    user-select: none;
+    margin-left: 200px;
+  }
+  
+.search-bar {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center; /* centraliza verticalmente */
+  gap: 8px; /* espaço entre input e botão */
+}
+
+.search-bar input {
+  padding: 7px 15px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  width: 240px; /* diminui um pouco pra caber o botão */
+  background-color: #0b1524;
+  color: #cbd5e1;
+  border: 1px solid #66aaff;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.search-bar input::placeholder {
+  color: #a0b8d8;
+}
+
+.search-bar input:focus {
+  outline: none;
+  background-color: #122a57;
+  box-shadow: 0 0 8px #66aaff;
+}
+
+/* Botão login menor e alinhado na mesma linha */                
+.search-bar button {
+  background-color: #66aaff; /* fundo azul */
+  color: #ffffff; /* texto branco */
+  border: 1px solid #66aaff;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+}
+
+.search-bar button:hover {
+  background-color: #4a8bd4; /* azul mais escuro */
+  color: #ffffff; /* mantém o texto branco */
+  box-shadow: 0 0
+}
+
+/* Botão login melhorado */
+.login-btn {
+  background-color: #3b82f6;
+  color: white;
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  transition: 0.3s ease;
+  box-shadow: 0 0 8px #3b82f655;
+}
+
+.login-btn:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+}
+
+/* Formulário de login */
+  .login-form {
+    display: none;
+    position: fixed;
+    top: 70px;
+    right: 40px;
+    background-color: #122a57;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+    z-index: 1001;
+    width: 280px;
+  }
+  
+  .login-form h3 {
+    color: #66aaff;
+    margin-bottom: 15px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    text-align: center;
+  }
+  
+  .login-form input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0b1524;
+    color: #cbd5e1;
+    border: 1px solid #66aaff;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .login-form input::placeholder {
+    color: #a0b8d8;
+  }
+  
+  .login-form input:focus {
+    outline: none;
+    background-color: #122a57;
+  }
+  
+  .login-form button {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #66aaff;
+    border: none;
+    border-radius: 25px;
+    color: #0b1524;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .login-form button:hover {
+    background-color: #a0c4ff;
+  }
+  
+  /* Conteúdo Principal */
+  main {
+    max-width: 1100px;
+    margin: 40px auto 60px;
+    padding: 0 20px;
+    flex-grow: 1;
+  }
+  
+  /* Títulos principais - ALTERADO para branco */
+  .main-title {
+    font-family: 'Orbitron', sans-serif;
+    color: white;       /* COR ALTERADA PARA BRANCO */
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    user-select: none;
+    text-align: center;
+    text-shadow: 0 0 8px #ffffff66; /* ajuste para sombra clara */
+  }
+  
+  /* Cartão do vídeo (video + texto embaixo) */
+  .video-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+    background: #122a57cc;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #66aaff55;
+    transition: transform 0.3s ease;
+  }
+  
+  .video-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px #a0c4ffcc;
+  }
+  
+  /* Vídeo lado a lado */
+  .video-card iframe {
+    width: 100%;
+    max-width: 560px;
+    height: 315px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+    background-color: black;
+    margin-bottom: 15px;
+  }
+  
+  /* Descrição abaixo do vídeo */
+  .video-card p {
+    max-width: 560px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #cbd5e1cc;
+    user-select: text;
+    text-shadow: 0 0 4px #0008;
+  }
+  
+  /* Seção dos componentes extras para preencher espaço */
+  .components-section {
+    background: #122a57cc;
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 18px #66aaff55;
+    margin-top: 40px;
+  }
+  
+  .components-section h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #66aaff;
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 0 0 6px #66aaff88;
+  }
+  
+  .component {
+    background: #0b1524;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    box-shadow: inset 0 0 8px #3a5ab8;
+    transition: background-color 0.3s;
+  }
+  
+  .component:hover {
+    background-color: #1e326a;
+  }
+  
+  .component h3 {
+    color: #a0c4ff;
+    margin-bottom: 8px;
+  }
+  
+  .component p {
+    color: #cbd5e1cc;
+    font-size: 1rem;
+  }
+  
+  /* Rodapé */
+  footer {
+    background-color: #122a57;
+    padding: 25px 30px;
+    text-align: center;
+    color: #66aaff;
+    box-shadow: inset 0 1px 3px rgba(255,255,255,0.1);
+    user-select: none;
+    font-size: 0.9rem;
+  }
+  
+  .footer-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+  }
+  
+  .socials a {
+    color: #66aaff;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+  }
+  
+  .socials a:hover {
+    color: #a0c4ff;
+  }
+  
+  .footer-text {
+    margin-top: 12px;
+    color: #99b2d1;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 1200px) {
+    main {
+      padding: 0 10px;
+    }
+  
+    .video-card iframe {
+      max-width: 100%;
+      height: auto;
+      aspect-ratio: 16/9;
+    }
+  
+    .video-card p {
+      max-width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    header {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .logo {
+      margin-left: 0;
+    }
+  
+    .search-bar {
+      justify-content: center;
+    }
+  
+    .search-bar input {
+      width: 100%;
+    }
+  
+    .login-form {
+      right: 10px;
+      width: 90%;
+    }
+  
+    .menu-btn {
+      top: 15px;
+      left: 15px;
+    }
+
+/* Modal base */
+.modal {
+  display: none; /* oculto por padrão */
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(11, 21, 36, 0.85);
+  backdrop-filter: blur(4px);
+  font-family: 'Orbitron', sans-serif;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: #0b1524;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #66aaffaa;
+  width: 90%;
+  max-width: 480px;
+  max-height: 80vh;
+  overflow-y: auto;
+  color: white;
+  animation: slideDown 0.3s ease forwards;
+  margin: 0; /* remove margens para não atrapalhar o flex */
+}
+
+
+@keyframes slideDown {
+  from { transform: translateY(-40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+  color: #66aaff;
+  float: right;
+  font-size: 28px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.close-btn:hover {
+  color: #ea0000;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  border-bottom: 2px solid #66aaff;
+  padding-bottom: 8px;
+}
+
+.premium-package {
+  background-color: #122a57cc;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 0 10px #3b82f655;
+}
+
+.premium-package h3 {
+  color: #66aaff;
+  margin-bottom: 8px;
+}
+
+.premium-package p {
+  font-size: 0.9rem;
+  line-height: 1.3;
+  margin: 6px 0;
+}
+
+  }

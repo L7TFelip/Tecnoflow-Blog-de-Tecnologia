@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TecnoFlow - Blog de Tecnologia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Open+Sans:wght@400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="Tecnoflow.css"/>
+ <!-- <script src="Tecnoflow.js"></script> -->
+
+  <style>
+    /* Modal fundo */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(11, 21, 36, 0.85);
+      backdrop-filter: blur(4px);
+      font-family: 'Orbitron', sans-serif;
+    }
+    /* Conteúdo da modal */
+    .modal-content {
+      background: #0b1524;
+      margin: 8% auto;
+      padding: 25px 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 480px;
+      color: white;
+      box-shadow: 0 0 15px #66aaffaa;
+      position: relative;
+      animation: slideDown 0.3s ease forwards;
+    }
+    @keyframes slideDown {
+      from {transform: translateY(-40px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+    /* Botão fechar */
+    .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      font-size: 28px;
+      font-weight: 700;
+      color: #66aaff;
+      cursor: pointer;
+      transition: color 0.25s ease;
+    }
+    .close-btn:hover {
+      color: #ea0000;
+    }
+    /* Título da modal */
+    .modal-content h2 {
+      margin-bottom: 20px;
+      border-bottom: 2px solid #66aaff;
+      padding-bottom: 8px;
+    }
+    /* Pacotes premium */
+    .premium-package {
+      background-color: #122a57cc;
+      border-radius: 10px;
+      padding: 15px 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 0 10px #3b82f655;
+    }
+    .premium-package h3 {
+      color: #66aaff;
+      margin-bottom: 8px;
+    }
+    .premium-package p {
+      font-size: 0.9rem;
+      line-height: 1.3;
+      margin: 6px 0;
+    }
+    /* Link premium (menu) com cor de coroa */
+    nav.sidebar ul li.premium a {
+      color: #f5c518;
+      font-weight: 700;
+    }
+    nav.sidebar ul li.premium a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Link FontAwesome no head -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<nav id="sidebar" class="sidebar">
+  <ul class="modern-menu">
+    <li><a href="#"><i class="fas fa-lightbulb"></i> Inovações</a></li>
+    <li><a href="#"><i class="fas fa-book"></i> Tutoriais</a></li>
+    <li><a href="#"><i class="fas fa-newspaper"></i> Notícias</a></li>
+    <li><a href="#"><i class="fas fa-globe"></i> Comunidade</a></li>
+    <li><a href="Linguagem.html"><i class="fa-solid fa-pen-fancy"></i> Linguagem Prog</a></li>
+    <li><a href="Cursos.html"><i class="fa-solid fa-money-check"></i> Cursos</a></li>
+    <li class="premium crown">
+      <a href="#" id="openPremiumModal"><i class="fas fa-crown"></i> Seja Premium</a>
+    </li>
+  </ul>
+</nav>
+
+
+
+<!-- Modal Premium -->
+<div id="premiumModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="closePremiumModal">&times;</span>
+    <h2>Pacotes Premium TecnoFlow</h2>
+    
+    <div class="premium-package">
+      <h3>Primeiro pacote - 1 mês</h3>
+      <p><strong>Premium:</strong> direito a cursos melhores, direito a ver novos projetos da empresa TecnoFlow, direito a notícias chegando mais adiantadas, direito a vídeos explicando mais sobre as peças na parte de montagem, etc.</p>
+      <p><strong>Preço:</strong> R$17,50</p>
+    </div>
+
+    <div class="premium-package">
+      <h3>Segundo pacote - 6 meses</h3>
+      <p><strong>Super Premium:</strong> mesmos benefícios do primeiro só que por 6 meses de uso.</p>
+      <p><strong>Preço:</strong> R$22,50</p>
+    </div>
+
+    <div class="premium-package">
+      <h3>Terceiro pacote - 1 ano</h3>
+      <p><strong>Legendário:</strong> todos os benefícios dos outros pacotes, mas com 1 ano de uso do Premium.</p>
+      <p><strong>Preço:</strong> R$40,00</p>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Botão do Menu -->
+  <div id="menuBtn" class="menu-btn">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </div>
+
+  <!-- Cabeçalho -->
+  <header>
+    <div class="logo">TecnoFlow</div>
+    <div class="search-bar">
+      <input type="text" placeholder="Pesquisar..." />
+      <a href="Login.html" class="login-btn">Login</a>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main>
+    <!-- Vídeos e descrições lado a lado com texto embaixo -->
+    <section class="video-section">
+      <h2 class="main-title">Guia Completo: Como Montar um PC</h2>
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/mdPzHzpLEOE" frameborder="0" allowfullscreen></iframe>
+        <p>Aprenda a montar seu próprio computador do zero! Este tutorial aborda desde a escolha dos componentes até a montagem final.</p>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <h2 class="main-title">PC Gamer do Aliexpress por R$1500!</h2>
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/H25FttrK4tQ?si=yLkCLVcA7vWf_wKy" frameborder="0" allowfullscreen></iframe>
+        <p>Veja um setup completo com Xeon, RX 580, SSD e muito mais. Ideal para quem quer economizar sem perder desempenho!</p>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <h2 class="main-title">Decorando o Setup com Itens Baratos</h2>
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/71xEB6i_xnc" frameborder="0" allowfullscreen></iframe>
+        <p>Dicas incríveis para deixar seu setup com visual gamer e moderno usando produtos acessíveis da Shopee e Aliexpress.</p>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <h2 class="main-title">Qual a Diferença entre SSD, HD, NVME</h2>
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/0aU18JHkzC4?si=8N1nfXhB39PyLM1e" frameborder="0" allowfullscreen></iframe>
+        <p>Descubra as melhores placas-mãe custo-benefício para seu Ryzen em 2025, combinando desempenho e preço.</p>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <h2 class="main-title">5 Melhores Placas mãe para Ryzen em 2025</h2>
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/fChF3N1nbW4?si=acHyUItGItWvu-DW" frameborder="0" allowfullscreen></iframe>
+        <p>Um tutorial prático para montar seu PC sem complicações, ideal para iniciantes.</p>
+      </div>
+    </section>
+
+    <section class="components-section">
+      <h2 class="main-title">Componentes Essenciais de um PC</h2>
+      <div class="component">
+        <h3>Processador (CPU)</h3>
+        <p>Responsável pelo processamento de dados. Escolha um modelo compatível com a placa-mãe e adequado ao seu uso.</p>
+      </div>
+      <div class="component">
+        <h3>Placa-mãe</h3>
+        <p>Conecta todos os componentes. Verifique a compatibilidade com CPU, memória e dispositivos.</p>
+      </div>
+      <div class="component">
+        <h3>Memória RAM</h3>
+        <p>Armazena dados temporários para acesso rápido. Fundamental para desempenho multitarefa.</p>
+      </div>
+      <div class="component">
+        <h3>Armazenamento (HDD/SSD)</h3>
+        <p>Responsável por guardar arquivos e o sistema operacional. SSDs oferecem maior velocidade.</p>
+      </div>
+      <div class="component">
+        <h3>Placa de Vídeo (GPU)</h3>
+        <p>Processa gráficos e vídeos. Essencial para jogos, edição e design gráfico.</p>
+      </div>
+      <div class="component">
+        <h3>Fonte de Alimentação (PSU)</h3>
+        <p>Fornece energia a todos os componentes. Deve ser eficiente e com potência adequada.</p>
+      </div>
+      <div class="component">
+        <h3>Gabinete</h3>
+        <p>A carcaça que abriga os componentes. Deve ter boa ventilação e espaço interno suficiente.</p>
+      </div>
+      <div class="component">
+        <h3>Sistema de Resfriamento</h3>
+        <p>Inclui coolers e, opcionalmente, watercoolers. Mantém a temperatura segura dos componentes.</p>
+      </div>
+      <div class="component">
+        <h3>Periféricos</h3>
+        <p>Incluem monitor, teclado, mouse, fones, etc. São essenciais para a interação com o computador.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <div class="footer-logo">TecnoFlow</div>
+    <div class="socials">
+      <a href="">Facebook</a>
+      <a href="https://www.instagram.com/7tfelipe?igsh=N2t5MGVubm9pc3V6">Instagram</a>
+      <a href="#">TikTok</a>
+    </div>
+    <div class="footer-text">@Blog TecnoFlow</div>
+  </footer>
+
+  <script src="Tecnoflow.js"></script>
+
+  <script>
+    // Abrir modal
+    const openBtn = document.getElementById('openPremiumModal');
+    const modal = document.getElementById('premiumModal');
+    const closeBtn = document.getElementById('closePremiumModal');
+
+    openBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.style.display = 'block';
+    });
+
+    // Fechar modal ao clicar no X
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    // Fechar modal ao clicar fora do conteúdo
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>

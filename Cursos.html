@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cursos de Desenvolvimento - Tecnoflow</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #0b1524 0%, #1b2a50 100%);
+      color: #fff;
+      min-height: 100vh;
+      padding: 40px 20px 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1, h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      margin-bottom: 40px;
+      text-align: center;
+      text-shadow: 0 0 8px #66aaffaa;
+    }
+
+    #curso-lista {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 50px;
+    }
+
+    .curso-item {
+      background: #0b1524cc;
+      padding: 30px 25px;
+      border-radius: 16px;
+      box-shadow: inset 0 0 14px #3a5ab8;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      position: relative;
+      user-select: none;
+    }
+
+    .curso-item:hover {
+      background-color: #1e326a;
+      transform: translateY(-6px);
+      box-shadow: 0 6px 24px #66aaff88;
+    }
+
+    .curso-info {
+      margin-bottom: 25px;
+    }
+
+    .curso-item strong {
+      font-size: 1.8rem;
+      display: block;
+      margin-bottom: 15px;
+      color: #a0c4ff;
+      letter-spacing: 0.05em;
+    }
+
+    .curso-item p {
+      color: #cbd5e1cc;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      user-select: text;
+    }
+
+    .inscrever-btn {
+      background-color: #66aaff;
+      color: #0b1524;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.15rem;
+      padding: 14px 30px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #66aaffcc;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      align-self: flex-start;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      user-select: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Ícone simples animado dentro do botão */
+    .inscrever-btn::after {
+      content: '→';
+      display: inline-block;
+      font-weight: 900;
+      font-size: 1.3rem;
+      margin-left: 8px;
+      transform: translateX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .inscrever-btn:hover {
+      background-color: #4a8bd4;
+      box-shadow: 0 0 28px #66aaffee;
+      transform: scale(1.1);
+    }
+
+    .inscrever-btn:hover::after {
+      transform: translateX(6px);
+    }
+
+    form {
+      background: #122a57cc;
+      padding: 30px 40px;
+      border-radius: 16px;
+      max-width: 900px;
+      width: 100%;
+      box-shadow: 0 0 25px #66aaffaa;
+      color: #cbd5e1;
+      margin-bottom: 50px;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 14px 18px;
+      margin-top: 8px;
+      border-radius: 10px;
+      border: none;
+      background-color: #0b1524;
+      color: #cbd5e1;
+      font-size: 1.1rem;
+      box-shadow: inset 0 0 12px #3a5ab8;
+      transition: background-color 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus {
+      outline: none;
+      background-color: #1e326a;
+      box-shadow: 0 0 16px #66aaff;
+    }
+
+    button[type="submit"] {
+      margin-top: 30px;
+      background-color: #66aaff;
+      border: none;
+      color: #0b1524;
+      padding: 16px 38px;
+      font-weight: 700;
+      font-size: 1.3rem;
+      border-radius: 14px;
+      cursor: pointer;
+      box-shadow: 0 0 20px #66aaffcc;
+      transition: background-color 0.3s, transform 0.3s;
+      user-select: none;
+      display: block;
+      margin-left: auto;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #4a8bd4;
+      transform: scale(1.1);
+    }
+
+    .mensagem {
+      margin-top: 25px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      text-align: center;
+      min-height: 30px;
+    }
+
+    .mensagem.erro {
+      color: #f44336;
+    }
+
+    .mensagem.sucesso {
+      color: #28a745;
+    }
+
+    .comissao {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 22px 28px;
+      margin-bottom: 50px;
+      border-radius: 16px;
+      color: #856404;
+      font-weight: 700;
+      max-width: 900px;
+      width: 100%;
+      box-shadow: 0 0 18px #ffeebaaa;
+      font-size: 1.15rem;
+      user-select: none;
+      text-align: center;
+    }
+
+    footer {
+      margin-top: auto;
+      background-color: #122a57;
+      width: 100%;
+      padding: 60px 0;
+      text-align: center;
+      box-shadow: inset 0 1px 3px rgba(255,255,255,0.1);
+      user-select: none;
+    }
+
+    .footer-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 8rem;
+      color: white;
+      letter-spacing: 12px;
+      text-shadow: 0 0 30px #66aaffcc;
+      user-select: none;
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+
+    /* Responsividade */
+    @media (max-width: 960px) {
+      #curso-lista {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+      }
+
+      form, .comissao {
+        max-width: 100%;
+        padding: 25px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 30px 15px 80px;
+      }
+      h1, h2 {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+      }
+      .footer-logo {
+        font-size: 4.5rem;
+        letter-spacing: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Cursos de Desenvolvimento de Sistemas</h1>
+
+  <div id="curso-lista">
+    <div class="curso-item">
+      <div class="curso-info">
+        <strong>Desenvolvimento Web (HTML, CSS, JavaScript)</strong>
+        <p>Aprenda a criar sites modernos, responsivos e interativos usando as tecnologias básicas da web. Ideal para quem quer atuar como front-end developer.</p>
+      </div>
+      <button class="inscrever-btn">Inscreva-se</button>
+    </div>
+    <div class="curso-item">
+      <div class="curso-info">
+        <strong>Programação em Python</strong>
+        <p>Conheça a linguagem Python, aprenda a programar desde o básico até manipulação de dados, automação e desenvolvimento web back-end com frameworks populares.</p>
+      </div>
+      <button class="inscrever-btn">Inscreva-se</button>
+    </div>
+    <div class="curso-item">
+      <div class="curso-info">
+        <strong>Banco de Dados e SQL</strong>
+        <p>Aprenda a modelar, criar e gerenciar bancos de dados relacionais usando SQL. Essencial para manipular dados em aplicações corporativas.</p>
+      </div>
+      <button class="inscrever-btn">Inscreva-se</button>
+    </div>
+    <div class="curso-item">
+      <div class="curso-info">
+        <strong>Desenvolvimento de Aplicativos Mobile</strong>
+        <p>Explore o desenvolvimento de apps para Android e iOS utilizando frameworks multiplataforma como React Native e Flutter, do design à publicação.</p>
+      </div>
+      <button class="inscrever-btn">Inscreva-se</button>
+    </div>
+    <div class="curso-item">
+      <div class="curso-info">
+        <strong>Engenharia de Software</strong>
+        <p>Aprenda metodologias, padrões e boas práticas para planejar, desenvolver, testar e manter sistemas de software complexos e escaláveis.</p>
+      </div>
+      <button class="inscrever-btn">Inscreva-se</button>
+    </div>
+  </div>
+
+  <h2>Adicione seu Curso</h2>
+  <form id="formCurso">
+    <label for="nomeCurso">Nome do Curso:</label>
+    <input type="text" id="nomeCurso" required />
+
+    <label for="descricaoCurso">Descrição do Curso:</label>
+    <input type="text" id="descricaoCurso" required />
+
+    <label for="lucroMensal">Lucro Mensal Estimado (R$):</label>
+    <input type="number" id="lucroMensal" min="0" step="0.01" required />
+
+    <button type="submit">Adicionar Curso</button>
+  </form>
+
+  <div class="mensagem" id="mensagem"></div>
+
+  <div class="comissao">
+    <strong>Importante:</strong> A comissão cobrada é de <strong>10,1%</strong> sobre o lucro total mensal obtido pelos cursos adicionados.
+  </div>
+
+  <footer>
+    <div class="footer-logo">Tecnoflow</div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('formCurso');
+    const cursoLista = document.getElementById('curso-lista');
+    const mensagem = document.getElementById('mensagem');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nome = document.getElementById('nomeCurso').value.trim();
+      const descricao = document.getElementById('descricaoCurso').value.trim();
+      const lucro = parseFloat(document.getElementById('lucroMensal').value);
+
+      if(nome.length < 3) {
+        mostrarMensagem('Nome do curso deve ter pelo menos 3 caracteres.', 'erro');
+        return;
+      }
+      if(descricao.length < 10) {
+        mostrarMensagem('Descrição deve ter pelo menos 10 caracteres.', 'erro');
+        return;
+      }
+      if(isNaN(lucro) || lucro < 0) {
+        mostrarMensagem('Informe um lucro mensal válido.', 'erro');
+        return;
+      }
+
+      const novoCurso = document.createElement('div');
+      novoCurso.classList.add('curso-item');
+
+      novoCurso.innerHTML = `
+        <div class="curso-info">
+          <strong>${nome}</strong>
+          <p>${descricao}</p>
+        </div>
+        <button class="inscrever-btn">Inscreva-se</button>
+      `;
+
+      cursoLista.appendChild(novoCurso);
+
+      mostrarMensagem(`Curso "${nome}" adicionado com sucesso!`, 'sucesso');
+
+      form.reset();
+    });
+
+    function mostrarMensagem(texto, tipo) {
+      mensagem.textContent = texto;
+      mensagem.className = 'mensagem ' + tipo;
+      setTimeout(() => {
+        mensagem.textContent = '';
+        mensagem.className = 'mensagem';
+      }, 4500);
+    }
+  </script>
+
+</body>
+</html>
